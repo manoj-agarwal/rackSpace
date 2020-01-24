@@ -10,7 +10,12 @@ public class TokenBasedInputStreamSplitter implements InputStreamSplitter {
         this.tokens = tokens;
     }
     @Override
-    public List<InputStream> splitStream(InputStream input) {
-        return null;
+    public void splitStream(InputStream input) {
+
     }
+	@Override
+	public void splitFile(String file) {
+		// TODO Auto-generated method stub
+		
+	}
 }
