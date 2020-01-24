@@ -3,31 +3,24 @@ package com.rackspace.fileProcessor;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReportStatistics {
-	
-	private long wordCount;
-	private  Map<String,Long> wordOccuranceCountMap = new HashMap<String,Long>();
-	
-	
-	
-	public  Map<String, Long> getWordCountMap() {
-		return wordOccuranceCountMap;
-	}
-	
-	public  void setWordCountMap(Map<String, Long> wordCountMap) {
-		this.wordOccuranceCountMap = wordCountMap;
-	}
+class ReportStatistics {
 
-	public long getWordCount() {
-		return wordCount;
-	}
+    private long wordCount;
+    private Map<String, Long> wordOccuranceCountMap = new HashMap<>();
 
-	public void setWordCount(long wordCount) {
-		this.wordCount = wordCount;
-	}
-	
-	
+    Map<String, Long> getWordCountMap() {
+        return wordOccuranceCountMap;
+    }
 
+    void setWordCountMap(Map<String, Long> wordCountMap) {
+        this.wordOccuranceCountMap = wordCountMap;
+    }
 
+    long getWordCount() {
+        return wordCount;
+    }
 
+    void setWordCount(long wordCount) {
+        this.wordCount = wordCount;
+    }
 }

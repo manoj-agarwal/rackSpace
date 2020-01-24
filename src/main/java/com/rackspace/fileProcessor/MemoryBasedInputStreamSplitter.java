@@ -1,12 +1,6 @@
 package com.rackspace.fileProcessor;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +10,7 @@ public class MemoryBasedInputStreamSplitter implements InputStreamSplitter {
     private File file;
     private int FILE_SIZE;
     
-    public MemoryBasedInputStreamSplitter(int chunkSize){
+    MemoryBasedInputStreamSplitter(int chunkSize){
         this.chunkSize = chunkSize;
     }
 
@@ -24,10 +18,7 @@ public class MemoryBasedInputStreamSplitter implements InputStreamSplitter {
     public void splitStream(InputStream input) {
         List<String>[] output = new ArrayList[5];
         BufferedInputStream bufferedInputStream = new BufferedInputStream(input, chunkSize);
-        int offset = 0;
-        int data;
-        int NUMBER_OF_CHUNKS = 0;
-         byte[] temporary = null;
+        byte[] temporary;
          int totalBytesRead = 0;
          int count =0;
          
@@ -42,7 +33,7 @@ public class MemoryBasedInputStreamSplitter implements InputStreamSplitter {
         	   chunkSize = bytesRemaining;
             System.out.println("CHUNK_SIZE: "+chunkSize);
            }
-           output[count] =  new ArrayList<String>();
+           output[count] = new ArrayList<>();
            temporary = new byte[chunkSize]; //Temporary Byte Array
            int bytesRead = input.read(temporary, 0, chunkSize);
            output[count].add(new String(temporary, 0, bytesRead));
@@ -52,7 +43,6 @@ public class MemoryBasedInputStreamSplitter implements InputStreamSplitter {
            if ( bytesRead > 0) // If bytes read is not empty
            {
             totalBytesRead += bytesRead;
-            NUMBER_OF_CHUNKS++;
            }
            
           }

@@ -5,40 +5,40 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class AppDataCenter {
+class AppDataCenter {
 
-	static BlockingQueue<List> dataQueue = new ArrayBlockingQueue<List>(2);
-	static List<ReportStatistics> report = new ArrayList<ReportStatistics>(5);
+    private static BlockingQueue<List> dataQueue = new ArrayBlockingQueue<>(2);
+    private static List<ReportStatistics> report = new ArrayList<>(5);
 
-	public static BlockingQueue<List> getDataQueue() {
-		return dataQueue;
-	}
+    static BlockingQueue<List> getDataQueue() {
+        return dataQueue;
+    }
 
-	public static void setDataQueue(BlockingQueue<List> dataQueue) {
-		dataQueue = dataQueue;
-	}
+    static void setDataQueue(BlockingQueue<List> thisDataQueue) {
+        dataQueue = thisDataQueue;
+    }
 
-	public static void addElementInDataQueue(List<String> item) {
+    static void addElementInDataQueue(List<String> item) {
 
-		try {
-			dataQueue.put(item);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            dataQueue.put(item);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	public static List<ReportStatistics> getReport() {
-		return report;
-	}
+    static List<ReportStatistics> getReport() {
+        return report;
+    }
 
-	public static void setReport(List<ReportStatistics> report) {
-		report = report;
-	}
+    static void setReport(List<ReportStatistics> thisReport) {
+        report = thisReport;
+    }
 
-	public static void addReportStatistic(ReportStatistics reportStatistic) {
+    static void addReportStatistic(ReportStatistics reportStatistic) {
 
-		report.add(reportStatistic);
-	}
+        report.add(reportStatistic);
+    }
 
 }
